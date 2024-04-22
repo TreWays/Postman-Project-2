@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "57c716c2-ed20-4bc3-b7eb-08f3be01661e",
+		"name": "Postman Project 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30959766"
+	},
+	"item": [
+		{
+			"name": "csvpost",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"    pm.test(\"firstname\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData.firstName).to.eql(pm.iterationData.get(\"firstName\"));\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"lastname\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData.lastName).to.eql(pm.iterationData.get(\"lastName\"));\r",
+							"    });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyYW5kb21AZ21haWwuY29tIiwiZW1haWwiOiJyYW5kb21AZ21haWwuY29tIiwibmJmIjoxNzExNDgxNDcyLCJleHAiOjE3MTE0ODIwNzAsImlhdCI6MTcxMTQ4MTQ3MiwiaXNzIjoiSXNzdWVyIiwiYXVkIjoiQXVkaWVuY2UifQ.L1f9I6BI8GLSdb1hg4Y9eQ66PDxqfpboWMD4m4efqHeqRngkr-KPOroOM86prYzIDPg96RqWAO2yAxlqaVqQqA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"EmployeeID\": 7,\r\n    \"FirstName\": \"{{firstName}}\",\r\n    \"LastName\": \"{{lastName}}\",\r\n    \"Age\": 30,\r\n    \"State\": \"MI\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7174/api/employee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7174",
+					"path": [
+						"api",
+						"employee"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "post_id",
+			"value": "50",
+			"type": "string"
+		}
+	]
+}
